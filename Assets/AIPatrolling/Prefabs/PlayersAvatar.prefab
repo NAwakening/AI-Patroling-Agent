@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8959061185719427836
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 508697396969090002, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_Name
+      value: PlayersAvatar Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781988772164606577, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 3093195189399602046}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685710998163984576, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3462963821856889710, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 508697396969090002, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 3093195189399602046}
+  m_SourcePrefab: {fileID: 100100000, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+--- !u!114 &2470941781655877773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6781988772164606577, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+  m_PrefabInstance: {fileID: 8959061185719427836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888904139733059886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c9f87da90dc26409858091817956d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &3042212100527349416 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6227600217657064532, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+  m_PrefabInstance: {fileID: 8959061185719427836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8888904139733059886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 508697396969090002, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+  m_PrefabInstance: {fileID: 8959061185719427836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3093195189399602046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888904139733059886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ff152a29341814fa697615a613a562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fsm: {fileID: 2470941781655877773}
+  animator: {fileID: 3042212100527349416}
+  movingSpeed: 0
+  turningSpeed: 0

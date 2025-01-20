@@ -1,14 +1,14 @@
 using UnityEngine;
 
-namespace N_Awakening.AI_Patrol
+namespace N_Awakening.PatrolAgents
 {
     #region Enum
 
     public enum BehaviourType
     {
         Stop,
-        Rotate,
         Move,
+        Rotate
     }
 
     #endregion
@@ -32,5 +32,3 @@ namespace N_Awakening.AI_Patrol
         [SerializeField] public PatrolBehaviour[] behaviour;
     }
 }
-
-
