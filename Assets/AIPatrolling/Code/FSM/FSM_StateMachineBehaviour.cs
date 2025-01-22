@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace N_Awakening.PatrolAgents
@@ -6,11 +7,11 @@ namespace N_Awakening.PatrolAgents
     {
         public States state;
 
+
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             Debug.Log("I entered this State " + state.ToString());
-            animator.gameObject.GetComponent<FiniteStateMachine>().EnteredState(state);
+            animator.gameObject.transform.parent.GetComponent<FiniteStateMachine>().EnteredState(state);
         }
     }
-
 }

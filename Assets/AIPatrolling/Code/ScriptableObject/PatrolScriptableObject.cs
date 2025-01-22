@@ -6,9 +6,9 @@ namespace N_Awakening.PatrolAgents
 
     public enum BehaviourType
     {
-        Stop,
-        Move,
-        Rotate
+        STOP,
+        MOVE_TO_WAYPOINT,
+        ROTATE_TO_DIRECTION
     }
 
     #endregion
