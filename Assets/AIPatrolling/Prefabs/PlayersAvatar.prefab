@@ -152,6 +152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayersAvatar
       objectReference: {fileID: 0}
+    - target: {fileID: 550831093534371195, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 6781988772164606577, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
       propertyPath: agent
       value: 
@@ -208,6 +212,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 508697396969090002, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
       insertIndex: 2
       addedObject: {fileID: 3093195189399602046}
+    - targetCorrespondingSourceObject: {fileID: 508697396969090002, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2388756257170060229}
   m_SourcePrefab: {fileID: 100100000, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
 --- !u!4 &1656721858913595964 stripped
 Transform:
@@ -244,5 +251,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fsm: {fileID: 2470941781655877773}
   animator: {fileID: 4412492628502470565}
-  movingSpeed: 0
-  turningSpeed: 0
+  model: {fileID: 4412492628495428473}
+  movingSpeed: 3
+  turningSpeed: 5
+--- !u!114 &2388756257170060229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888904139733059886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 3aaa4dc298a079f429a62a188dcfabb1, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3093195189399602046}
+        m_TargetAssemblyTypeName: N_Awakening.PatrolAgents.PlayersAvatar, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0c58a851-df19-4bac-9781-a0699aea58fe
+    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

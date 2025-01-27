@@ -10,7 +10,6 @@ namespace N_Awakening.PatrolAgents
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            Debug.Log("I entered this State " + state.ToString());
             animator.gameObject.transform.parent.GetComponent<FiniteStateMachine>().EnteredState(state);
         }
     }

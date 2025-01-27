@@ -14,6 +14,7 @@ namespace N_Awakening.PatrolAgents
 
         [SerializeField] protected FiniteStateMachine fsm;
         [SerializeField] protected Animator animator;
+        [SerializeField] protected Transform model;
 
         #endregion
 
@@ -26,7 +27,7 @@ namespace N_Awakening.PatrolAgents
 
         #region RunTumeVariables
 
-
+        
 
         #endregion
 
@@ -61,6 +62,11 @@ namespace N_Awakening.PatrolAgents
         public Animator GetAnimator
         {
             get { return animator; }
+        }
+
+        public Transform GetModel
+        {
+            get { return model; }
         }
 
         #endregion

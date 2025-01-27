@@ -30,11 +30,48 @@ namespace N_Awakening.PatrolAgents
 
         #endregion
 
+        #region RuntimeMethods
+
+        protected States state;
+        protected Vector3 moveDirection;
+        protected float moveSpeed;
+        protected float turnSpeed;
+
+        #endregion
+
+        #region UnityMethods
+
+        private void FixedUpdate()
+        {
+            switch (state)
+            {
+                case States.MOVING:
+                    rb.linearVelocity = moveDirection * moveSpeed;
+                    Debug.Log(moveDirection);
+                    if (agent as PlayersAvatar)
+                    {
+                        agent.GetModel.forward = Vector3.Slerp(agent.GetModel.forward, moveDirection.normalized, Time.fixedDeltaTime * turnSpeed);
+                    }
+                    break;      
+            }
+        }
+
+        #endregion
+
         #region Public Methods
 
         public void EnteredState(States value)
         {
-            Debug.Log("FSM - EnteredState(): Entered the finite state " + value);
+            state = value;
+            switch (state)
+            {
+                case States.IDLE:
+                    InitializeIdleState();
+                    break;
+                case States.TURNING: 
+                    InitializeTurningState();
+                    break;
+            }
             Invoke("CleanFlags", 0.1f);
         }
 
@@ -53,6 +90,39 @@ namespace N_Awakening.PatrolAgents
             {
                 agent.GetAnimator.SetBool(value.ToString(), false);
             }
+        }
+
+        #endregion
+
+        #region FSMMethods
+
+        protected void InitializeIdleState()
+        {
+            rb.linearVelocity = Vector3.zero;
+        }
+
+        protected void InitializeTurningState()
+        {
+            rb.linearVelocity = Vector3.zero;
+        }
+
+        #endregion
+
+        #region GettersAndSetters
+
+        public Vector3 SetMoveDirection
+        {
+            set { moveDirection = value; Debug.Log("Move Direction: " + moveDirection.ToString()); }
+        }
+
+        public float SetMoveSpeed
+        {
+            set { moveSpeed = value; }
+        }
+
+        public float SetTurnSpeed
+        {
+            set { turnSpeed = value; }
         }
 
         #endregion

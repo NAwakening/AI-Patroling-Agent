@@ -275,6 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fsm: {fileID: 1785355804915465380}
   animator: {fileID: 4754767706784995787}
+  model: {fileID: 4754767706794526807}
   movingSpeed: 0
   turningSpeed: 0
   behaviour: {fileID: 0}

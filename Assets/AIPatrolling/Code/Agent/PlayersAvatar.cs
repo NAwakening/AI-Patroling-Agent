@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace N_Awakening.PatrolAgents
 {
@@ -12,7 +13,7 @@ namespace N_Awakening.PatrolAgents
     {
         #region References
 
-
+        
 
         #endregion
 
@@ -44,19 +45,40 @@ namespace N_Awakening.PatrolAgents
 
         #region LocalMethods
 
+        protected void Move()
+        {
 
+        }
 
         #endregion
 
         #region PublicMethods
 
-
+        public void OnMove(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                Debug.Log("OnMove: " + value.ReadValue<Vector2>());
+                fsm.SetMoveDirection = new Vector3(value.ReadValue<Vector2>().x, 0f, value.ReadValue<Vector2>().y);
+                Debug.Log("Input: " + value.ReadValue<Vector2>().ToString());
+                fsm.SetMoveSpeed = movingSpeed;
+                fsm.SetTurnSpeed = turningSpeed;
+                fsm.StateMechanic(StateMechanic.MOVE);
+            }
+            else if (value.canceled)
+            {
+                fsm.SetMoveDirection = Vector3.zero;
+                fsm.SetMoveSpeed = 0;
+                fsm.SetTurnSpeed = 0;
+                fsm.StateMechanic(StateMechanic.STOP);
+            }
+        }
 
         #endregion
 
         #region GettersAndSetters
 
-
+        
 
         #endregion
     }
