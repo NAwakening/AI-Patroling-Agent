@@ -46,13 +46,11 @@ namespace N_Awakening.PatrolAgents
             switch (state)
             {
                 case States.MOVING:
-                    rb.linearVelocity = moveDirection * moveSpeed;
-                    Debug.Log(moveDirection);
-                    if (agent as PlayersAvatar)
-                    {
-                        agent.GetModel.forward = Vector3.Slerp(agent.GetModel.forward, moveDirection.normalized, Time.fixedDeltaTime * turnSpeed);
-                    }
+                    ExecutingMovingState();
                     break;      
+                case States.TURNING:
+                    ExecutingTurningState();
+                    break;
             }
         }
 
@@ -72,11 +70,12 @@ namespace N_Awakening.PatrolAgents
                     InitializeTurningState();
                     break;
             }
-            Invoke("CleanFlags", 0.1f);
+            //Invoke("CleanFlags", 0.27f);
         }
 
         public void StateMechanic(StateMechanic value)
         {
+            CleanFlags();
             agent.GetAnimator.SetBool(value.ToString(), true);
         }
 
@@ -99,11 +98,26 @@ namespace N_Awakening.PatrolAgents
         protected void InitializeIdleState()
         {
             rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        protected void ExecutingMovingState()
+        {
+            rb.linearVelocity = moveDirection * moveSpeed;
+            if (agent as PlayersAvatar)
+            {
+                agent.GetModel.forward = Vector3.Slerp(agent.GetModel.forward, moveDirection.normalized, Time.fixedDeltaTime * turnSpeed);
+            }
         }
 
         protected void InitializeTurningState()
         {
             rb.linearVelocity = Vector3.zero;
+        }
+
+        protected void ExecutingTurningState()
+        {
+
         }
 
         #endregion

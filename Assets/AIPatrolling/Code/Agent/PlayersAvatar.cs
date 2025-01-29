@@ -45,10 +45,7 @@ namespace N_Awakening.PatrolAgents
 
         #region LocalMethods
 
-        protected void Move()
-        {
-
-        }
+        
 
         #endregion
 
@@ -58,9 +55,7 @@ namespace N_Awakening.PatrolAgents
         {
             if (value.performed)
             {
-                Debug.Log("OnMove: " + value.ReadValue<Vector2>());
                 fsm.SetMoveDirection = new Vector3(value.ReadValue<Vector2>().x, 0f, value.ReadValue<Vector2>().y);
-                Debug.Log("Input: " + value.ReadValue<Vector2>().ToString());
                 fsm.SetMoveSpeed = movingSpeed;
                 fsm.SetTurnSpeed = turningSpeed;
                 fsm.StateMechanic(StateMechanic.MOVE);

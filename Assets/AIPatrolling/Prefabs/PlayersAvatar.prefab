@@ -152,6 +152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayersAvatar
       objectReference: {fileID: 0}
+    - target: {fileID: 508697396969090002, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 550831093534371195, guid: 66ebfcdd1b7578c48ad05ac2615624d6, type: 3}
       propertyPath: m_Constraints
       value: 116
