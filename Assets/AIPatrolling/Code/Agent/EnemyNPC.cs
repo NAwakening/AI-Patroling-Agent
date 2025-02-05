@@ -12,7 +12,7 @@ namespace N_Awakening.PatrolAgents
     {
         #region References
 
-        [SerializeField] protected PatrolScriptableObject behaviour;
+
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace N_Awakening.PatrolAgents
 
         #region RunTumeVariables
 
-
+        protected EnemyNPC_SO behaviour;
 
         #endregion
 
@@ -56,7 +56,10 @@ namespace N_Awakening.PatrolAgents
 
         #region GettersAndSetters
 
-
+        public EnemyNPC_SO SetBehaviour
+        {
+            set { behaviour = value; }
+        }
 
         #endregion
     }
