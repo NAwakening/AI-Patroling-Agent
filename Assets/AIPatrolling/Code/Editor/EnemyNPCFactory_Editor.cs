@@ -11,11 +11,7 @@ namespace N_Awakening.PatrolAgents
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-
-            if (enemyNPCFactory != null )
-            {
-                enemyNPCFactory = (EnemyNPCFactory)target;
-            }
+            enemyNPCFactory = (EnemyNPCFactory)target;
 
             if (GUILayout.Button("Create Enemies"))
             {

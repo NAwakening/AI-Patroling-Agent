@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5122187006296207361}
   - component: {fileID: 1701999824846482450}
+  - component: {fileID: 5047775692418364107}
   - component: {fileID: 6732882793875823277}
   - component: {fileID: 7569649586090315262}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FieldOfVision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,6 +43,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7254326332220413828}
   m_Mesh: {fileID: 2534964839176971238, guid: ba174b0cee99f8a45b63e7387f94b804, type: 3}
+--- !u!114 &5047775692418364107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254326332220413828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0467809bfe3ff94695283497c83bee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originPoint: {fileID: 0}
 --- !u!23 &6732882793875823277
 MeshRenderer:
   m_ObjectHideFlags: 0

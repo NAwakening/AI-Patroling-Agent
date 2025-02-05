@@ -66,6 +66,9 @@ namespace N_Awakening.PatrolAgents
                 case States.IDLE:
                     InitializeIdleState();
                     break;
+                case States.MOVING:
+                    InitializeMovingState();
+                    break;
                 case States.TURNING: 
                     InitializeTurningState();
                     break;
@@ -101,6 +104,11 @@ namespace N_Awakening.PatrolAgents
             rb.angularVelocity = Vector3.zero;
         }
 
+        protected void InitializeMovingState()
+        {
+            rb.angularVelocity = Vector3.zero;
+        }
+
         protected void ExecutingMovingState()
         {
             rb.linearVelocity = moveDirection * moveSpeed;
@@ -117,7 +125,8 @@ namespace N_Awakening.PatrolAgents
 
         protected void ExecutingTurningState()
         {
-
+            rb.angularVelocity = moveDirection * turnSpeed;
+            //transform.forward = Vector3.Slerp(transform.forward, moveDirection.normalized, Time.fixedDeltaTime * turnSpeed);
         }
 
         #endregion
@@ -126,7 +135,7 @@ namespace N_Awakening.PatrolAgents
 
         public Vector3 SetMoveDirection
         {
-            set { moveDirection = value; Debug.Log("Move Direction: " + moveDirection.ToString()); }
+            set { moveDirection = value; }
         }
 
         public float SetMoveSpeed

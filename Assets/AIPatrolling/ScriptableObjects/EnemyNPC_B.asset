@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75db7f2f2f65d7f4db30a4c79da462ae, type: 3}
-  m_Name: EnemyNPC_A
+  m_Name: EnemyNPC_B
   m_EditorClassIdentifier: 
   behaviour:
   - stateMechanic: 0
@@ -18,8 +18,8 @@ MonoBehaviour:
     time: -1
     speed: 0
   visionCone:
-    distance: 4
-    fieldOfView: 60
+    distance: 2
+    fieldOfView: 5
   spawn:
-    position: {x: -0.5, y: 0, z: -5.5}
-    rotation: {x: 0, y: 90, z: 0}
+    position: {x: -0.5, y: 0, z: -10}
+    rotation: {x: 0, y: 0, z: 0}
