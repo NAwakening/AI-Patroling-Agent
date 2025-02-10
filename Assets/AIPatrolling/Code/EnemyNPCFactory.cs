@@ -36,7 +36,22 @@ namespace N_Awakening.PatrolAgents
                 enemiesInstancesGameObject.Add(enemyInstance);
                 enemyInstance.GetComponent<EnemyNPC>().SetBehaviour = enemy;
                 SpawnConeOfView(enemyInstance, enemy.visionCone.distance, enemy.visionCone.fieldOfView, enemy.spawn.rotation.y);
-                //Do the field of view
+                if (enemy.spawn.isStatic)
+                {
+                    enemyInstance.GetComponent<EnemyNPC>().SetStatic();
+                }
+                else if (enemy.spawn.onlyRotates)
+                {
+                    enemyInstance.GetComponent<EnemyNPC>().SetForOnlyRotation();
+                }
+                else if (enemy.spawn.onlyMovesInX)
+                {
+                    enemyInstance.GetComponent<EnemyNPC>().SetForOnlyXMovement();
+                }
+                else if (enemy.spawn.moves)
+                {
+                    enemyInstance.GetComponent<EnemyNPC>().SetForMovement();
+                }
             }
         }
 

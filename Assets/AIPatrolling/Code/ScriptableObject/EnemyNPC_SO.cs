@@ -25,6 +25,10 @@ namespace N_Awakening.PatrolAgents
     {
         [SerializeField] public Vector3 position;
         [SerializeField] public Vector3 rotation;
+        [SerializeField] public bool isStatic;
+        [SerializeField] public bool onlyRotates;
+        [SerializeField] public bool onlyMovesInX;
+        [SerializeField] public bool moves;
     }
 
     #endregion

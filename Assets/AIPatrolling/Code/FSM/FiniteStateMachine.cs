@@ -30,12 +30,14 @@ namespace N_Awakening.PatrolAgents
 
         #endregion
 
-        #region RuntimeMethods
+        #region RuntimeVariables
 
         protected States state;
         protected Vector3 moveDirection;
         protected float moveSpeed;
         protected float turnSpeed;
+        protected float turningCronometer;
+        protected Vector3 initialTurnDirection;
 
         #endregion
 
@@ -82,6 +84,26 @@ namespace N_Awakening.PatrolAgents
             agent.GetAnimator.SetBool(value.ToString(), true);
         }
 
+        public void SetStatic()
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
+
+        public void SetForOnlyRotation()
+        {
+            rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        }
+
+        public void SetForOnlyXMovement()
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionX;
+        }
+
+        public void SetForMovement()
+        {
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        }
+
         #endregion
 
         #region LocalMethods
@@ -121,12 +143,20 @@ namespace N_Awakening.PatrolAgents
         protected void InitializeTurningState()
         {
             rb.linearVelocity = Vector3.zero;
+            turningCronometer = 0f;
+            initialTurnDirection = transform.localRotation.eulerAngles;
         }
 
         protected void ExecutingTurningState()
         {
-            rb.angularVelocity = moveDirection * turnSpeed;
-            //transform.forward = Vector3.Slerp(transform.forward, moveDirection.normalized, Time.fixedDeltaTime * turnSpeed);
+            turningCronometer += Time.fixedDeltaTime;
+            //Debug.LogWarning("ExecutingTurningState() - " + turningCronometer + " - " + turnSpeed);
+            //Debug.LogWarning("Direction - " + moveDirection);
+            //Debug.LogWarning("Lerp Percentage - " + turningCronometer / turnSpeed);
+            if (turnSpeed > 0)
+            {
+                transform.localRotation = Quaternion.Euler(Vector3.Lerp(initialTurnDirection, moveDirection, turningCronometer / turnSpeed));
+            }
         }
 
         #endregion

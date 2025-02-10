@@ -18,20 +18,24 @@ MonoBehaviour:
     time: 3
     speed: 0
   - stateMechanic: 2
-    destinyDirection: {x: 0, y: 1, z: 0}
+    destinyDirection: {x: 0, y: 0, z: 0}
     time: 2
-    speed: 1.574
+    speed: 0
   - stateMechanic: 0
     destinyDirection: {x: 0, y: 0, z: 0}
     time: 5
     speed: 0
   - stateMechanic: 2
-    destinyDirection: {x: 0, y: 1, z: 0}
+    destinyDirection: {x: 0, y: -180, z: 0}
     time: 4
-    speed: 0.785
+    speed: 0
   visionCone:
     distance: 2.5
     fieldOfView: 20
   spawn:
     position: {x: 10.5, y: 0, z: -4.5}
     rotation: {x: 0, y: 180, z: 0}
+    isStatic: 0
+    onlyRotates: 1
+    onlyMovesInX: 0
+    moves: 0

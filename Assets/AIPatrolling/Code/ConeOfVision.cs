@@ -20,7 +20,6 @@ namespace N_Awakening.PatrolAgents
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("lo detecte");
             CheckVisibility(other.transform);
         }
 

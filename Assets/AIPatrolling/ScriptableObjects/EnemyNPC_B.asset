@@ -23,3 +23,7 @@ MonoBehaviour:
   spawn:
     position: {x: -0.5, y: 0, z: -10}
     rotation: {x: 0, y: 0, z: 0}
+    isStatic: 1
+    onlyRotates: 0
+    onlyMovesInX: 0
+    moves: 0

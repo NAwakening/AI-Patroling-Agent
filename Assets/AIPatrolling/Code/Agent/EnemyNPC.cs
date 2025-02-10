@@ -118,7 +118,25 @@ namespace N_Awakening.PatrolAgents
 
         #region PublicMethods
 
+        public void SetStatic()
+        {
+            fsm.SetStatic();
+        }
 
+        public void SetForOnlyRotation()
+        {
+            fsm.SetForOnlyRotation();
+        }
+
+        public void SetForOnlyXMovement()
+        {
+            fsm.SetForOnlyXMovement();
+        }
+
+        public void SetForMovement()
+        {
+            fsm.SetForMovement();
+        }
 
         #endregion
 
@@ -126,7 +144,7 @@ namespace N_Awakening.PatrolAgents
 
         protected void InitializeStopSubstateMechanic()
         {
-            fsm.SetMoveDirection = Vector3.zero;
+            //fsm.SetMoveDirection = Vector3.zero;
             fsm.SetMoveSpeed = 0;
             fsm.SetTurnSpeed = 0;
         }
@@ -150,18 +168,19 @@ namespace N_Awakening.PatrolAgents
             if (currentBehaviour.time == 0)
             {
                 transform.localRotation = Quaternion.Euler(currentBehaviour.destinyDirection);
+                fsm.SetTurnSpeed = currentBehaviour.time;
             }
             else
             {
                 fsm.SetMoveDirection = currentBehaviour.destinyDirection;
                 fsm.SetMoveSpeed = 0;
-                fsm.SetTurnSpeed = currentBehaviour.speed;
+                fsm.SetTurnSpeed = currentBehaviour.time;
             }
         }
 
         protected void FinalizeTurnSubstateMechanic()
         {
-            fsm.SetMoveDirection = Vector3.zero;
+            //fsm.SetMoveDirection = Vector3.zero;
             fsm.SetMoveSpeed = 0;
             fsm.SetTurnSpeed = 0;
         }
