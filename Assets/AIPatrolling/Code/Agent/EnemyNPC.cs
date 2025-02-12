@@ -38,7 +38,7 @@ namespace N_Awakening.PatrolAgents
             currentBehaviour = behaviour.behaviour[0];
             InitializeSubstate();
             InvokeStateMechanic();
-            if (currentBehaviour.time >= 0)
+            if (currentBehaviour.time >= 0 && currentBehaviour.stateMechanic != StateMechanic.MOVE)
             {
                 StartCoroutine(TimerForEnemyBehaviour());
             }
@@ -66,22 +66,6 @@ namespace N_Awakening.PatrolAgents
                 case StateMechanic.TURN:
                     fsm.StateMechanic(StateMechanic.TURN);
                     break;
-            }
-        }
-
-        protected void GoToNextBehaviour()
-        {
-            currentBehaviourIndex++;
-            if (currentBehaviourIndex >= behaviour.behaviour.Length)
-            {
-                currentBehaviourIndex = 0;
-            }
-            currentBehaviour = behaviour.behaviour[currentBehaviourIndex];
-            InitializeSubstate();
-            InvokeStateMechanic();
-            if (currentBehaviour.time >= 0)
-            {
-                StartCoroutine(TimerForEnemyBehaviour());
             }
         }
 
@@ -138,21 +122,37 @@ namespace N_Awakening.PatrolAgents
             fsm.SetForMovement();
         }
 
+        public void GoToNextBehaviour()
+        {
+            currentBehaviourIndex++;
+            if (currentBehaviourIndex >= behaviour.behaviour.Length)
+            {
+                currentBehaviourIndex = 0;
+            }
+            currentBehaviour = behaviour.behaviour[currentBehaviourIndex];
+            InitializeSubstate();
+            InvokeStateMechanic();
+            if (currentBehaviour.time >= 0 && currentBehaviour.stateMechanic != StateMechanic.MOVE)
+            {
+                StartCoroutine(TimerForEnemyBehaviour());
+            }
+        }
+
         #endregion
 
         #region SubStateMechanic
 
         protected void InitializeStopSubstateMechanic()
         {
-            //fsm.SetMoveDirection = Vector3.zero;
+            fsm.SetMoveDirection = Vector3.zero;
             fsm.SetMoveSpeed = 0;
             fsm.SetTurnSpeed = 0;
         }
 
         protected void InitializeMoveSubstateMechanic()
         {
-            fsm.SetMoveDirection = currentBehaviour.destinyDirection - transform.position;
-            fsm.SetMoveSpeed = currentBehaviour.speed;
+            fsm.SetMoveDirection = currentBehaviour.destinyDirection;
+            fsm.SetMoveSpeed = currentBehaviour.time;
             fsm.SetTurnSpeed = 0;
         }
 
@@ -161,16 +161,12 @@ namespace N_Awakening.PatrolAgents
             fsm.SetMoveDirection = Vector3.zero;
             fsm.SetMoveSpeed = 0;
             fsm.SetTurnSpeed = 0;
+            transform.position = currentBehaviour.destinyDirection;
         }
 
         protected void InitializeTurnSubstateMechanic()
         {
-            if (currentBehaviour.time == 0)
-            {
-                transform.localRotation = Quaternion.Euler(currentBehaviour.destinyDirection);
-                fsm.SetTurnSpeed = currentBehaviour.time;
-            }
-            else
+            if (currentBehaviour.time > 0)
             {
                 fsm.SetMoveDirection = currentBehaviour.destinyDirection;
                 fsm.SetMoveSpeed = 0;
@@ -180,9 +176,10 @@ namespace N_Awakening.PatrolAgents
 
         protected void FinalizeTurnSubstateMechanic()
         {
-            //fsm.SetMoveDirection = Vector3.zero;
+            fsm.SetMoveDirection = Vector3.zero;
             fsm.SetMoveSpeed = 0;
             fsm.SetTurnSpeed = 0;
+            transform.localRotation = Quaternion.Euler(currentBehaviour.destinyDirection);
         }
 
         #endregion

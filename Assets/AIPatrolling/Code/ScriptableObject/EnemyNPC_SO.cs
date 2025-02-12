@@ -10,7 +10,6 @@ namespace N_Awakening.PatrolAgents
         public StateMechanic stateMechanic;
         [SerializeField] public Vector3 destinyDirection;
         public float time;
-        public float speed;
     }
 
     [System.Serializable]

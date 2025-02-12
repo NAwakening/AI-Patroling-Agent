@@ -36,8 +36,8 @@ namespace N_Awakening.PatrolAgents
         protected Vector3 moveDirection;
         protected float moveSpeed;
         protected float turnSpeed;
-        protected float turningCronometer;
-        protected Vector3 initialTurnDirection;
+        protected float lerpCronometer;
+        protected Vector3 initialValue;
 
         #endregion
 
@@ -96,7 +96,7 @@ namespace N_Awakening.PatrolAgents
 
         public void SetForOnlyXMovement()
         {
-            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionX;
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
         }
 
         public void SetForMovement()
@@ -129,33 +129,49 @@ namespace N_Awakening.PatrolAgents
         protected void InitializeMovingState()
         {
             rb.angularVelocity = Vector3.zero;
+            lerpCronometer = 0f;
+            initialValue = transform.position;
         }
 
         protected void ExecutingMovingState()
         {
-            rb.linearVelocity = moveDirection * moveSpeed;
             if (agent as PlayersAvatar)
             {
+                rb.linearVelocity = moveDirection * moveSpeed;
                 agent.GetModel.forward = Vector3.Slerp(agent.GetModel.forward, moveDirection.normalized, Time.fixedDeltaTime * turnSpeed);
+            }
+            else
+            {
+                //lerpCronometer += Time.fixedDeltaTime;
+                //Debug.LogWarning("ExecutingMovingState() - " + lerpCronometer + " - " + turnSpeed);
+                //Debug.LogWarning("Direction - " + moveDirection);
+                //Debug.LogWarning("Lerp Percentage - " + lerpCronometer / moveSpeed);
+                //transform.position = Vector3.Lerp(initialValue, moveDirection, lerpCronometer / moveSpeed);
+                rb.linearVelocity = (moveDirection - transform.position).normalized * moveSpeed;
+                transform.forward = Vector3.Slerp(transform.forward, (moveDirection - transform.position).normalized, Time.fixedDeltaTime * 2.5f);
+                if (Vector3.Distance(transform.position, moveDirection) <= 0.1f)
+                {
+                    ((EnemyNPC)agent).GoToNextBehaviour();
+                }
             }
         }
 
         protected void InitializeTurningState()
         {
             rb.linearVelocity = Vector3.zero;
-            turningCronometer = 0f;
-            initialTurnDirection = transform.localRotation.eulerAngles;
+            lerpCronometer = 0f;
+            initialValue = transform.localRotation.eulerAngles;
         }
 
         protected void ExecutingTurningState()
         {
-            turningCronometer += Time.fixedDeltaTime;
+            lerpCronometer += Time.fixedDeltaTime;
             //Debug.LogWarning("ExecutingTurningState() - " + turningCronometer + " - " + turnSpeed);
             //Debug.LogWarning("Direction - " + moveDirection);
             //Debug.LogWarning("Lerp Percentage - " + turningCronometer / turnSpeed);
             if (turnSpeed > 0)
             {
-                transform.localRotation = Quaternion.Euler(Vector3.Lerp(initialTurnDirection, moveDirection, turningCronometer / turnSpeed));
+                transform.localRotation = Quaternion.Euler(Vector3.Lerp(initialValue, moveDirection, lerpCronometer / turnSpeed));
             }
         }
 
