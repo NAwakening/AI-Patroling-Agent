@@ -16,51 +16,51 @@ MonoBehaviour:
   - stateMechanic: 1
     destinyDirection: {x: 35.5, y: 0, z: -6.5}
     time: 2
-  - stateMechanic: 2
-    destinyDirection: {x: 0, y: 90, z: 0}
+  - stateMechanic: 0
+    destinyDirection: {x: 0, y: 0, z: 0}
     time: 0.5
   - stateMechanic: 1
     destinyDirection: {x: 39.5, y: 0, z: -6.5}
     time: 3
-  - stateMechanic: 2
-    destinyDirection: {x: 0, y: 180, z: 0}
+  - stateMechanic: 0
+    destinyDirection: {x: 0, y: 0, z: 0}
     time: 1
   - stateMechanic: 1
     destinyDirection: {x: 39.5, y: 0, z: -8.5}
     time: 2
-  - stateMechanic: 2
-    destinyDirection: {x: 0, y: 270, z: 0}
+  - stateMechanic: 0
+    destinyDirection: {x: 0, y: 0, z: 0}
     time: 1.5
   - stateMechanic: 1
     destinyDirection: {x: 35.5, y: 0, z: -8.5}
     time: 3
-  - stateMechanic: 2
-    destinyDirection: {x: 0, y: 360, z: 0}
+  - stateMechanic: 0
+    destinyDirection: {x: 0, y: 0, z: 0}
     time: 2
   - stateMechanic: 1
     destinyDirection: {x: 35.5, y: 0, z: -6.5}
     time: 2
-  - stateMechanic: 2
-    destinyDirection: {x: 0, y: 90, z: 0}
+  - stateMechanic: 0
+    destinyDirection: {x: 0, y: 0, z: 0}
     time: 2.5
   - stateMechanic: 1
     destinyDirection: {x: 39.5, y: 0, z: -6.5}
     time: 3
-  - stateMechanic: 2
+  - stateMechanic: 0
     destinyDirection: {x: 0, y: 0, z: 0}
     time: 3
   - stateMechanic: 1
     destinyDirection: {x: 39.5, y: 0, z: -4.5}
     time: 2
-  - stateMechanic: 2
-    destinyDirection: {x: 0, y: -90, z: 0}
+  - stateMechanic: 0
+    destinyDirection: {x: 0, y: 0, z: 0}
     time: 3.5
   - stateMechanic: 1
     destinyDirection: {x: 35.5, y: 0, z: -4.5}
     time: 3
-  - stateMechanic: 2
-    destinyDirection: {x: 0, y: 180, z: 0}
-    time: 3
+  - stateMechanic: 0
+    destinyDirection: {x: 0, y: 0, z: 0}
+    time: 4
   visionCone:
     distance: 5.5
     fieldOfView: 90

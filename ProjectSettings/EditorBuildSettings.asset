@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/AIPatrolling/Scenes/Credits.unity
+    guid: 9af29d167aa4f2d4c90d8e0948887158
+  - enabled: 1
     path: Assets/AIPatrolling/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
